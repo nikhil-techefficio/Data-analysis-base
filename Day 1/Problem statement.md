@@ -1,7 +1,9 @@
 # Business Scenario
 
- You are a Data Analyst at a mid-sized retail company. Management wants to understand:
-
+ You are a Data Analyst at a mid-sized retail company. 
+ 
+ ## ***Management wants to understand:***
+<pre>
  Total Revenue
 
  Revenue by Region
@@ -12,4 +14,4 @@
 
  Top 5 Customers by Revenue
 
- You are given raw transactional data.
+ You are given raw transactional data.</pre>
