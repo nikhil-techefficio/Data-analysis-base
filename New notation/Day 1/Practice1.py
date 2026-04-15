@@ -51,6 +51,11 @@ df.to_excel("New notation\Day 1\Book2_updated.xlsx", index=False)
 unique_values = df["Region"].unique()
 print(unique_values)
 
+#add ons 
+
+df["Region"].nunique() # to get the number of unique values in a column
+df["Region"].value_counts() # to get the count of each unique value in a column
+
 # now to display the unique values in a row, we can use the unique() method on the row as well.
 unique_values_row = df.iloc[0].unique()
 print("Row 0:", unique_values_row) # not much useful
@@ -66,3 +71,47 @@ df["mean"] = df["Sales"].mean()
 
 
 # Math Formulas usage in data analysis
+
+
+# Load data from different formats (CSV, JSON, PDF) <--
+df_csv = pd.read_csv("data.csv")
+df_json = pd.read_json("data.json")
+
+
+#Now to handle missing values in the data, we can use the fillna() method to fill the missing values with a specific value or with the mean/median/mode of the column.
+df["Sales"].fillna(df["Sales"].mean(), inplace=True) # fill missing values with mean of the column
+#1. Handling missing values (VERY important)
+df.isnull().sum()
+df.dropna()
+df.fillna(0)
+
+# Sorting data
+df.sort_values(by="Sales", ascending=False, inplace=True)
+df.sort_values("Revenue", ascending=False)
+
+# Grouping (VERY important for analysis)
+grouped = df.groupby("Region")["Sales"].sum()
+
+# Index basics
+df.set_index("Region", inplace=True) # set Region as index
+df.set_index("Date")
+df.reset_index()
+
+# Column operations (advanced basics)
+df["Revenue"] = df["Sales"] * df["Price_per_unit"] # create a new column Revenue by multiplying Sales and Price_per_unit
+
+df["cum_sales"] = df["Sales"].cumsum() # create a new column cum_sales which is the cumulative sum of sales
+df["pct"] = df["Sales"] / df["Sales"].sum() * 100 # create a new column pct which is the percentage of sales out of total sales
+
+# Duplicate handling
+df.duplicated() # to check for duplicate rows
+df.drop_duplicates(inplace=True) # to drop duplicate rows
+df.duplicated().sum() # to get the count of duplicate rows
+
+
+# filtering + grouping + missing values
+filtered = df[df["Sales"] > 1000] # filter rows where Sales is greater than 1000
+grouped_filtered = filtered.groupby("Region")["Sales"].sum() # group the filtered data by Region and sum the Sales
+grouped_filtered.fillna(0, inplace=True) # fill missing values in the grouped data          
+        
+      
