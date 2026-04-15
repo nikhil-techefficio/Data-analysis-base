@@ -113,5 +113,18 @@ df.duplicated().sum() # to get the count of duplicate rows
 filtered = df[df["Sales"] > 1000] # filter rows where Sales is greater than 1000
 grouped_filtered = filtered.groupby("Region")["Sales"].sum() # group the filtered data by Region and sum the Sales
 grouped_filtered.fillna(0, inplace=True) # fill missing values in the grouped data          
-        
-      
+
+
+
+ # Multiple conditions or and and usage
+filtered_multi = df[(df["Sales"] > 1000) & (df["Region"] == "North")] # filter rows where Sales is greater than 1000 and Region is North
+filtered_multi_or = df[(df["Sales"] > 1000) | (df["Region"] == "North")] # filter rows where Sales is greater than 1000 or Region is North
+df[(df["Revenue"] > 1000) & (df["Region"] == "South")]
+df[(df["Region"] == "South") | (df["Region"] == "East")]
+# IN condition (very important)
+df[df["Region"].isin(["South", "East"])]        
+# BETWEEN range     
+df[df["Revenue"].between(500, 2000)]    
+
+# Multiple aggregations
+agg = df.groupby("Region").agg({"Sales": ["sum", "mean"], "Revenue": ["sum", "mean"]})
