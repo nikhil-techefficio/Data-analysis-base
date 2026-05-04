@@ -1,17 +1,14 @@
 # Business Scenario
 
- You are a Data Analyst at a mid-sized retail company. 
+ You are a Data Analyst at a mid-sized retail company.
+ Retail Sales Trends & Data Cleaning (Time Series + Missing Data) 
  
  ## ***Management wants to understand:***
 <pre>
- Total Revenue
-
- Revenue by Region
-
- Revenue by Product Category
-
- Monthly Sales Trend
-
- Top 5 Customers by Revenue
-
- You are given raw transactional data.</pre>
+   Problem Statement
+   Clean missing values intelligently (no blind deletion)
+   Compute daily total revenue trend
+   Calculate moving average (2-day)
+   Identify which region is growing fastest
+   Flag suspicious rows (data quality issues)
+</pre>
